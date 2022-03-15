@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.18)
 
 project(example-github-actions)
+enable_testing()
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -12,3 +13,5 @@ target_sources(calc
 install(TARGETS
   calc
   RUNTIME)
+add_test(NAME test_add
+  COMMAND sh -c "[ 3 = $($<TARGET_FILE:calc> 2 + 1) ]")
