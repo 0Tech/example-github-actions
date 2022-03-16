@@ -14,7 +14,10 @@ int main(int argc, char* argv[]) {
 
   std::string const binary_operator{argv[2]};
   std::unordered_map<std::string, std::function<int(int, int)>> const handlers{
-	{"+"s, [](auto l, auto r) { return l + r; }}
+	{"+"s, [](auto l, auto r) { return l + r; }},
+	{"-"s, [](auto l, auto r) { return l - r; }},
+	{"*"s, [](auto l, auto r) { return l * r; }},
+	{"/"s, [](auto l, auto r) { return l / r; }},
   };
   if (not handlers.contains(binary_operator)) {
 	throw "operator not supported: "s + binary_operator;
