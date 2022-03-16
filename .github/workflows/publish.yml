@@ -1,0 +1,10 @@
+name: publish
+on:
+  schedule:
+    - cron: '0 7 * * *'
+  push:
+    tags:
+      - v*
+jobs:
+  publish-image:
+    uses: ./.github/workflows/publish-image.yml
