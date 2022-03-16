@@ -6,12 +6,4 @@ on:
       - main
 jobs:
   build:
-    steps:
-      - uses: technote-space/get-diff-action@v6
-        id: git-diff
-        with:
-          PATTERNS: |
-            **/CMakeLists.txt
-            **/*.(c,h)xx
-      - uses: ./.github/workflows/test-build.yml
-        if: ${{steps.git-diff.outputs.diff}}
+    uses: ./.github/workflows/test-build.yml
