@@ -14,4 +14,10 @@ install(TARGETS
   calc
   RUNTIME)
 add_test(NAME test_add
-  COMMAND sh -c "[ 3 = $($<TARGET_FILE:calc> 2 + 1) ]")
+  COMMAND sh -c "[ 3 -eq $($<TARGET_FILE:calc> 2 + 1) ]")
+add_test(NAME test_subtract
+  COMMAND sh -c "[ 1 -eq $($<TARGET_FILE:calc> 2 - 1) ]")
+add_test(NAME test_multiply
+  COMMAND sh -c "[ 8 -eq $($<TARGET_FILE:calc> 4 \\* 2) ]")
+add_test(NAME test_divide
+  COMMAND sh -c "[ 2 -eq $($<TARGET_FILE:calc> 4 / 2) ]")
