@@ -1,0 +1,21 @@
+name: test build
+on:
+  workflow_call:
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        build_type:
+          - Debug
+          - Release
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: docker test
+        uses: docker/build-push-action@v2
+        with:
+          push: false
+          build-args: |
+            build_type=${{matrix.build_type}}
+          target: test
