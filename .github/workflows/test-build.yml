@@ -12,8 +12,16 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+      - name: git diff
+        uses: technote-space/get-diff-action@v6
+        id: git-diff
+        with:
+          PATTERNS: |
+            **/CMakeLists.txt
+            **/*.(c,h)xx
       - name: docker test
         uses: docker/build-push-action@v2
+        if: ${{steps.git-diff.outputs.diff}}
         with:
           push: false
           build-args: |
