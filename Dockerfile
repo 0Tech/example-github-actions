@@ -34,9 +34,12 @@ FROM runtime AS final
 ARG install_dir
 ARG user
 
+RUN ln -s $install_dir/bin/calc /etc/init
+ENTRYPOINT ["/etc/init"]
+
 COPY --from=build $install_dir $install_dir
 USER $user
-ENTRYPOINT ["$install_dir/bin/calc"]
+
 
 # test
 FROM build AS test
