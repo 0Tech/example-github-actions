@@ -8,3 +8,8 @@ on:
 jobs:
   publish-image:
     uses: ./.github/workflows/publish-image.yml
+    secrets:
+      registry: ghcr.io
+      repository: ${{github.repository}}
+      username: ${{github.repository_owner}}
+      password: ${{secrets.GITHUB_TOKEN}}
