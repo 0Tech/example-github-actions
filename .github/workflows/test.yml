@@ -5,5 +5,5 @@ on:
     branches:
       - main
 jobs:
-  build:
-    uses: ./.github/workflows/test-build.yml
+  binary:
+    uses: ./.github/workflows/test-binary.yml
