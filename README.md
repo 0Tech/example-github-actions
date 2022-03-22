@@ -1,5 +1,6 @@
 # example-github-actions
 
+[![license](https://img.shields.io/github/license/0Tech/example-github-actions)](https://github.com/0Tech/example-github-actions/blob/main/LICENSE)
 [![test](https://github.com/0Tech/example-github-actions/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/0Tech/example-github-actions/actions/workflows/test.yml)
 [![nightly](https://github.com/0Tech/example-github-actions/actions/workflows/publish.yml/badge.svg?event=schedule)](https://github.com/0Tech/example-github-actions/actions/workflows/publish.yml)
 
