@@ -1,0 +1,24 @@
+name: test mergify
+on:
+  workflow_call:
+env:
+  path: .github/mergify.yml
+  validate_url: https://engine.mergify.io/validate/
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: git diff
+        uses: technote-space/get-diff-action@v6
+        id: git-diff
+        with:
+          PATTERNS: |
+            ${{env.path}}
+      - name: validate mergify
+        run: [ $(curl -w "%{http_code}" -s -o /dev/null -F 'data=@${{env.path}}' ${{env.validate_url}}) -eq 200 ]
+        if: ${{steps.git-diff.outputs.diff}}
+      - name: report failure
+        run: curl -F 'data=@${{env.path}}' ${{env.validate_url}}
+        if: ${{failure()}}
