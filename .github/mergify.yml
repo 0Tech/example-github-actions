@@ -4,6 +4,7 @@ pull_request_rules:
       - "#approved-reviews-by>=0"
       - check-success=binary / unit-test (Debug)
       - check-success=binary / unit-test (Release)
+      - check-success=Analyze (cpp)
     actions:
       merge:
         method: squash
