@@ -7,5 +7,3 @@ on:
 jobs:
   build:
     uses: ./.github/workflows/test-build.yml
-  mergify:
-    uses: ./.github/workflows/test-mergify.yml
