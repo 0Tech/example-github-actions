@@ -4,7 +4,8 @@ on:
     - cron: '0 18 * * *'
   push:
     tags:
-      - v*
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-*'
 jobs:
   publish-image:
     uses: ./.github/workflows/publish-image.yml
